@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from functions import crearBaseDatos, salirAplicacion, insertarRegistro, limpiarCampos
+from functions import crearBaseDatos, salirAplicacion, insertarRegistro, limpiarCampos, cerrarCampos
 
 root = Tk()
 
@@ -81,7 +81,7 @@ botonLimpiar = Button(frameInferior, text="Limpiar", width=10, command=lambda:li
 botonLimpiar.grid(row=1, column=0, padx=5, pady=5)
 botonLimpiar.config(font=("Verdana", 10), state="disabled")
 
-botonCerrar = Button(frameInferior, text="Cerrar", width=10)
+botonCerrar = Button(frameInferior, text="Cerrar", width=10, command=lambda:cerrarCampos(entryNombre, entryApellido, entryEmail, entryPass,  botonLimpiar, botonGuardar, botonCerrar, botonConsultar, textComentarios))
 botonCerrar.grid(row=1, column=3, padx=5, pady=5)
 botonCerrar.config(font=("Verdana", 10), state="disabled")
 
