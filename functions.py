@@ -31,8 +31,8 @@ def salirAplicacion(root):
     
 
 def insertarRegistro(entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonLimpiar, botonGuardar, botonCerrar):
-    messagebox.showwarning("Información requerida", "Los campos nombre, apellido, correo elecctronico y contraseña son obligatrios")
-    
+    messagebox.showinfo("Información requerida", "Los campos nombre, apellido, correo electronico y contraseña son obligatrios")
+
     entryNombre.config(font=("Verdanda", 12), justify="center", state="normal")
     entryApellido.config(font=("Verdanda", 12), justify="center", state="normal")
     entryEmail.config(font=("Verdanda", 12), justify="center", state="normal")
@@ -42,4 +42,23 @@ def insertarRegistro(entryNombre, entryApellido, entryEmail, entryPass, textCome
     botonLimpiar.config(font=("Verdana", 10), state="normal")
     botonGuardar.config(font=("Verdana", 10), state="normal")
     botonCerrar.config(font=("Verdana", 10), state="normal")
+    
+    
+def limpiarCampos(entryN, entryA, entryE, entryP, textCom):
+    valor = entryN.get()
+    if valor !="":
+        entryN.delete(0,len(valor))
+    valor = entryA.get()
+    if valor !="":
+        entryA.delete(0,len(valor))
+    valor = entryE.get()
+    if valor !="":
+        entryE.delete(0,len(valor))
+    valor = entryP.get()
+    if valor !="":
+        entryP.delete(0,len(valor))
+    textCom.delete("1.0","end")
+
+    
+
 
