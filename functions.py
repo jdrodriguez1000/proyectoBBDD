@@ -30,7 +30,7 @@ def salirAplicacion(root):
         root.destroy()
     
 
-def insertarRegistro(entryI, entryN, entryA, entryE, entryP, textCom, botonCo, botonLi, botonGu, botonCe):
+def insertarRegistro(entryI, entryN, entryA, entryE, entryP, textCom, botonCo, botonGu):
     messagebox.showinfo("Información requerida", "Los campos nombre, apellido, correo electronico y contraseña son obligatrios")
 
     entryI.config(state="disabled")
@@ -39,10 +39,9 @@ def insertarRegistro(entryI, entryN, entryA, entryE, entryP, textCom, botonCo, b
     entryE.config(state="normal")
     entryP.config(state="normal")
     textCom.configure(state="normal")
+    
     botonCo.config(state="disabled")
-    botonLi.config(state="normal")
     botonGu.config(state="normal")
-    botonCe.config(state="normal")
     
     
 def limpiarCampos(entryI, entryN, entryA, entryE, entryP, textCom):
@@ -62,8 +61,9 @@ def limpiarCampos(entryI, entryN, entryA, entryE, entryP, textCom):
     if valor !="":
         entryP.delete(0,len(valor))
     textCom.delete("1.0","end")
+ 
     
-def cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnLim, btnGua, btnCer, btnCon, txtCom):
+def cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom):
     valor = entryI.get()
     if valor !="":
         entryI.delete(0,len(valor))
@@ -86,15 +86,16 @@ def cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnLim, btnGua, btnCer, 
     entryE.config(state="disabled")
     entryP.config(state="disabled")
     
-    btnLim.config(state="disabled")
     btnGua.config(state="disabled")
-    btnCer.config(state="disabled")
     btnCon.config(state="disabled")   
+    btnEli.config(state="disabled")
+    btnAct.config(state="disabled") 
     
     txtCom.delete("1.0","end") 
     txtCom.configure(state="disabled")
+ 
     
-def leerRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnLim, btnGua, btnCer, btnCon):
+def leerRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnGua, btnCon, btnEli, btnAct):
     messagebox.showinfo("Lectura Registro", "Para leer un registro se requiere ingresar el Id del usuario y presionar el boton consultar")
     
     entryI.config(state="normal")
@@ -105,10 +106,10 @@ def leerRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnLim, btnGua,
 
     txtCom.configure(state="disabled")
     
-    btnLim.config(state="normal")
     btnGua.config(state="disabled")
-    btnCer.config(state="normal")
     btnCon.config(state="normal")
+    btnEli.config(state="disabled")
+    btnAct.config(state="disabled")
     
 
 
