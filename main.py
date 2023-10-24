@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from functions import crearBaseDatos
 
 root = Tk()
 
@@ -97,7 +98,7 @@ menuBarra.add_cascade(label="Operaciones", menu=menuCRUD, font=("Verdana", 15))
 menuBarra.add_cascade(label="Ayuda", menu=menuAyuda, font=("Verdana", 15))
 
 #Construccion submenus
-menuBBDD.add_command(label="Conectar a la BD")
+menuBBDD.add_command(label="Crear BD", command=crearBaseDatos)
 menuBBDD.add_command(label="Salir de la aplicación")
 
 menuCRUD.add_command(label="Insertar registro")

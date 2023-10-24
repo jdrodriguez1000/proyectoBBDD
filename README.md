@@ -9,3 +9,4 @@ El segundo se definió para la distribución de los botones de la practica.
 # Novedades
 1. Construccion de interfaz grafica utilizando: botones, labels, entries, texto multiple y frames.
 2. Creación del archivo principal
+3. Creación del archivo de funciones y la importacion del modulo 
