@@ -69,7 +69,7 @@ frameInferior = Frame(root, width=400, height=60)
 frameInferior.pack()
 
 # Creacion de los botones
-botonConsultar = Button(frameInferior, text="Consultar", width=10)
+botonConsultar = Button(frameInferior, text="Consultar", width=10, command=lambda:consultarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonGuardar, botonActualizar, botonEliminar))
 botonConsultar.grid(row=1, column=0, padx=5, pady=5)
 botonConsultar.config(font=("Verdana", 10), state="disabled")
 
@@ -106,7 +106,7 @@ menuBBDD.add_command(label="Salir de la aplicación", command=lambda:salirAplica
 menuCRUD.add_command(label="Insertar registro", command=lambda:insertarRegistro(entryId,entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonGuardar, botonActualizar, botonEliminar))
 menuCRUD.add_command(label="Leer registro", command=lambda:leerRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonGuardar, botonConsultar, botonEliminar, botonActualizar))
 menuCRUD.add_separator()
-menuCRUD.add_command(label="Limpiar campos", command=lambda:limpiarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios))
+menuCRUD.add_command(label="Limpiar campos", command=lambda:limpiarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonGuardar, botonConsultar, botonEliminar, botonActualizar))
 
 menuAyuda.add_command(label="Licencia")
 menuAyuda.add_command(label="Acerca de...")
