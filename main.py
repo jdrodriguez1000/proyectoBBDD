@@ -77,7 +77,7 @@ botonGuardar = Button(frameInferior, text="Insertar", width=10, command=lambda:g
 botonGuardar.grid(row=1, column=1, padx=5, pady=5)
 botonGuardar.config(font=("Verdana", 10), state="disabled")
 
-botonActualizar = Button(frameInferior, text="Actualizar", width=10)
+botonActualizar = Button(frameInferior, text="Actualizar", width=10, command=lambda:actualizarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonGuardar, botonConsultar, botonEliminar, botonActualizar))
 botonActualizar.grid(row=1, column=2, padx=5, pady=5)
 botonActualizar.config(font=("Verdana", 10), state="disabled")
 

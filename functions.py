@@ -82,6 +82,7 @@ def limpiarCampos(entryI, entryN, entryA, entryE, entryP, txtCom, btnGua, btnCon
  
     
 def cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom):
+    entryI.config(state="normal")
     valor = entryI.get()
     if valor !="":
         entryI.delete(0,len(valor))
@@ -211,4 +212,25 @@ def consultarRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnCon, bt
             if long !="":
                 entryI.delete(0,len(long))    
 
+def actualizarRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnGua, btnCon, btnEli, btnAct):
+    Id = entryI.get()
+    nombre = entryN.get()
+    apellido = entryA.get()
+    email = entryE.get()
+    passw = entryP.get()
+    coment = txtCom.get("1.0", "end")
+    
+    lista_usuario = [(nombre, apellido, email, passw, coment, Id)]
+    conexionBD = sqlite3.connect("BD_Usuarios")
+    cursorBD = conexionBD.cursor()
+    
+    cursorBD.executemany("update tblUsuarios set nombre=?, apellido=?, correoelectronico=?, contrasena=?, comentarios=? where idUsuario=?",lista_usuario)
+    
+    conexionBD.commit()
+    conexionBD.close() 
+    messagebox.showinfo("Registro actualizado", "El registro se actualizó correctamente")
+    cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom)
+    
+    
+    
 
