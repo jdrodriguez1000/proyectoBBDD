@@ -133,12 +133,12 @@ def leerRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnGua, btnCon,
     btnAct.config(state="disabled")
     
 
-def guardarRegistro(entryI, entryN, entryA, entryE, entryP, texCom):
+def guardarRegistro(entryI, entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom):
     nombre = entryN.get()
     apellido = entryA.get()
     email = entryE.get()
     passw = entryP.get()
-    comentarios = texCom.get("1.0", "end")
+    comentarios = txtCom.get("1.0", "end")
     lista_datos = [(nombre, apellido, email, passw, comentarios)]
     if(nombre =="" or apellido=="" or email=="" or passw==""):
         messagebox.showerror("Información obligatoria", "Los campos nombre, apellido, correo electrónico y contraseña son obligatorios")
@@ -149,8 +149,9 @@ def guardarRegistro(entryI, entryN, entryA, entryE, entryP, texCom):
         cursorBD.executemany("insert into tblUsuarios values (NULL, ?, ?, ?, ?, ?)", lista_datos)
         conexionBD.commit()
         conexionBD.close() 
-        limpiarCampos(entryI, entryN, entryA, entryE, entryP, texCom)
+        
         messagebox.showinfo("Registro guardado", "El registro fue guardado exitosamente")
+        cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom) 
 
 
 def consultarRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnCon, btnGua, btnAct, btnEli):
@@ -231,6 +232,27 @@ def actualizarRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnGua, b
     messagebox.showinfo("Registro actualizado", "El registro se actualizó correctamente")
     cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom)
     
+
+def eliminarRegistro(entryI, entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom):
+    rpta = messagebox.askyesno("Eliminacion de usuario", "Realmente quiere eliminar de forma definitiva el usuario")
+    if rpta != True:
+      cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom)  
+    else:
+        Id=entryI.get()
+        
+        conexionBD = sqlite3.connect("BD_Usuarios")
+        cursorBD = conexionBD.cursor()
+        
+        cursorBD.execute("delete from tblUsuarios where idUsuario ="+ Id)
+        
+        conexionBD.commit()
+        conexionBD.close()
+        messagebox.showinfo("Eliminacion de usuario", "El usuario fue eliminado exitosamente")
+        cerrarCampos(entryI,entryN, entryA, entryE, entryP, btnGua, btnCon, btnEli, btnAct, txtCom)  
+        
+
     
+    
+   
     
 

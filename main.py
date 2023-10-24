@@ -73,7 +73,7 @@ botonConsultar = Button(frameInferior, text="Consultar", width=10, command=lambd
 botonConsultar.grid(row=1, column=0, padx=5, pady=5)
 botonConsultar.config(font=("Verdana", 10), state="disabled")
 
-botonGuardar = Button(frameInferior, text="Insertar", width=10, command=lambda:guardarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios))
+botonGuardar = Button(frameInferior, text="Insertar", width=10, command=lambda:guardarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, botonGuardar, botonConsultar, botonEliminar, botonActualizar, textComentarios))
 botonGuardar.grid(row=1, column=1, padx=5, pady=5)
 botonGuardar.config(font=("Verdana", 10), state="disabled")
 
@@ -81,7 +81,7 @@ botonActualizar = Button(frameInferior, text="Actualizar", width=10, command=lam
 botonActualizar.grid(row=1, column=2, padx=5, pady=5)
 botonActualizar.config(font=("Verdana", 10), state="disabled")
 
-botonEliminar = Button(frameInferior, text="Eliminar", width=10)
+botonEliminar = Button(frameInferior, text="Eliminar", width=10, command=lambda:eliminarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, botonGuardar, botonConsultar, botonEliminar, botonActualizar, textComentarios))
 botonEliminar.grid(row=1, column=3, padx=5, pady=5)
 botonEliminar.config(font=("Verdana", 10), state="disabled")
 
