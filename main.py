@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from functions import crearBaseDatos, salirAplicacion, insertarRegistro, limpiarCampos, cerrarCampos
+from functions import *
 
 root = Tk()
 
@@ -77,11 +77,11 @@ botonGuardar = Button(frameInferior, text="Guardar", width=10)
 botonGuardar.grid(row=1, column=2, padx=5, pady=5)
 botonGuardar.config(font=("Verdana", 10), state="disabled")
 
-botonLimpiar = Button(frameInferior, text="Limpiar", width=10, command=lambda:limpiarCampos(entryNombre, entryApellido, entryEmail, entryPass, textComentarios))
+botonLimpiar = Button(frameInferior, text="Limpiar", width=10, command=lambda:limpiarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios))
 botonLimpiar.grid(row=1, column=0, padx=5, pady=5)
 botonLimpiar.config(font=("Verdana", 10), state="disabled")
 
-botonCerrar = Button(frameInferior, text="Cerrar", width=10, command=lambda:cerrarCampos(entryNombre, entryApellido, entryEmail, entryPass,  botonLimpiar, botonGuardar, botonCerrar, botonConsultar, textComentarios))
+botonCerrar = Button(frameInferior, text="Cerrar", width=10, command=lambda:cerrarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass,  botonLimpiar, botonGuardar, botonCerrar, botonConsultar, textComentarios))
 botonCerrar.grid(row=1, column=3, padx=5, pady=5)
 botonCerrar.config(font=("Verdana", 10), state="disabled")
 
@@ -101,8 +101,8 @@ menuBarra.add_cascade(label="Ayuda", menu=menuAyuda, font=("Verdana", 15))
 menuBBDD.add_command(label="Crear Base de Datos", command=crearBaseDatos)
 menuBBDD.add_command(label="Salir de la aplicación", command=lambda:salirAplicacion(root))
 
-menuCRUD.add_command(label="Insertar registro", command=lambda:insertarRegistro(entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonLimpiar, botonGuardar, botonCerrar))
-menuCRUD.add_command(label="Leer registro")
+menuCRUD.add_command(label="Insertar registro", command=lambda:insertarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonLimpiar, botonGuardar, botonCerrar))
+menuCRUD.add_command(label="Leer registro", command=lambda:leerRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonLimpiar, botonGuardar, botonCerrar, botonConsultar))
 menuCRUD.add_command(label="Actualizar registro")
 menuCRUD.add_command(label="Eliminar registro")
 
