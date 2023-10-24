@@ -30,7 +30,7 @@ def salirAplicacion(root):
         root.destroy()
     
 
-def insertarRegistro(entryI, entryN, entryA, entryE, entryP, textCom, botonCo, botonGu):
+def insertarRegistro(entryI, entryN, entryA, entryE, entryP, textCom, btnCon, btnGua, btnAct, btnEli):
     messagebox.showinfo("Información requerida", "Los campos nombre, apellido, correo electronico y contraseña son obligatrios")
 
     entryI.config(state="disabled")
@@ -40,8 +40,10 @@ def insertarRegistro(entryI, entryN, entryA, entryE, entryP, textCom, botonCo, b
     entryP.config(state="normal")
     textCom.configure(state="normal")
     
-    botonCo.config(state="disabled")
-    botonGu.config(state="normal")
+    btnCon.config(state="disabled")
+    btnGua.config(state="normal")
+    btnAct.config(state="disabled")
+    btnEli.config(state="disabled")
     
     
 def limpiarCampos(entryI, entryN, entryA, entryE, entryP, textCom):
@@ -110,6 +112,28 @@ def leerRegistro(entryI, entryN, entryA, entryE, entryP, txtCom, btnGua, btnCon,
     btnCon.config(state="normal")
     btnEli.config(state="disabled")
     btnAct.config(state="disabled")
+    
+
+def guardarRegistro(entryI, entryN, entryA, entryE, entryP, texCom):
+    nombre = entryN.get()
+    apellido = entryA.get()
+    email = entryE.get()
+    passw = entryP.get()
+    comentarios = texCom.get("1.0", "end")
+    lista_datos = [(nombre, apellido, email, passw, comentarios)]
+    if(nombre =="" or apellido=="" or email=="" or passw==""):
+        messagebox.showerror("Información obligatoria", "Los campos nombre, apellido, correo electrónico y contraseña son obligatorios")
+    else:
+        conexionBD = sqlite3.connect("BD_Usuarios")
+        cursorBD = conexionBD.cursor()
+        
+        cursorBD.executemany("insert into tblUsuarios values (NULL, ?, ?, ?, ?, ?)", lista_datos)
+        conexionBD.commit()
+        conexionBD.close() 
+        limpiarCampos(entryI, entryN, entryA, entryE, entryP, texCom)
+        messagebox.showinfo("Registro guardado", "El registro fue guardado exitosamente")
+
+
     
 
 

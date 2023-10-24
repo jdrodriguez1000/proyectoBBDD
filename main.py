@@ -73,7 +73,7 @@ botonConsultar = Button(frameInferior, text="Consultar", width=10)
 botonConsultar.grid(row=1, column=0, padx=5, pady=5)
 botonConsultar.config(font=("Verdana", 10), state="disabled")
 
-botonGuardar = Button(frameInferior, text="Insertar", width=10)
+botonGuardar = Button(frameInferior, text="Insertar", width=10, command=lambda:guardarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios))
 botonGuardar.grid(row=1, column=1, padx=5, pady=5)
 botonGuardar.config(font=("Verdana", 10), state="disabled")
 
@@ -84,16 +84,6 @@ botonActualizar.config(font=("Verdana", 10), state="disabled")
 botonEliminar = Button(frameInferior, text="Eliminar", width=10)
 botonEliminar.grid(row=1, column=3, padx=5, pady=5)
 botonEliminar.config(font=("Verdana", 10), state="disabled")
-
-""""
-botonLimpiar = Button(frameInferior, text="Limpiar", width=10, command=lambda:limpiarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios))
-botonLimpiar.grid(row=1, column=0, padx=5, pady=5)
-botonLimpiar.config(font=("Verdana", 10), state="disabled")
-
-botonCerrar = Button(frameInferior, text="Cerrar", width=10, command=lambda:cerrarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass,  botonLimpiar, botonGuardar, botonCerrar, botonConsultar, textComentarios))
-botonCerrar.grid(row=1, column=3, padx=5, pady=5)
-botonCerrar.config(font=("Verdana", 10), state="disabled")
-"""
 
 #Construccion de la barra de menu
 menuBarra = Menu(root)
@@ -113,7 +103,7 @@ menuBBDD.add_separator()
 menuBBDD.add_command(label="Cerrar aplicacion", command=lambda:cerrarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass, botonGuardar, botonConsultar, botonEliminar, botonActualizar, textComentarios) )
 menuBBDD.add_command(label="Salir de la aplicación", command=lambda:salirAplicacion(root))
 
-menuCRUD.add_command(label="Insertar registro", command=lambda:insertarRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonGuardar))
+menuCRUD.add_command(label="Insertar registro", command=lambda:insertarRegistro(entryId,entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonGuardar, botonActualizar, botonEliminar))
 menuCRUD.add_command(label="Leer registro", command=lambda:leerRegistro(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonGuardar, botonConsultar, botonEliminar, botonActualizar))
 menuCRUD.add_separator()
 menuCRUD.add_command(label="Limpiar campos", command=lambda:limpiarCampos(entryId, entryNombre, entryApellido, entryEmail, entryPass, textComentarios))
