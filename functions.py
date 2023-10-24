@@ -29,5 +29,17 @@ def salirAplicacion(root):
         conexionBD.close()
         root.destroy()
     
-        
+
+def insertarRegistro(entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonLimpiar, botonGuardar, botonCerrar):
+    messagebox.showwarning("Información requerida", "Los campos nombre, apellido, correo elecctronico y contraseña son obligatrios")
+    
+    entryNombre.config(font=("Verdanda", 12), justify="center", state="normal")
+    entryApellido.config(font=("Verdanda", 12), justify="center", state="normal")
+    entryEmail.config(font=("Verdanda", 12), justify="center", state="normal")
+    entryPass.config(font=("Verdanda", 12), justify="center", state="normal")
+    textComentarios.configure(state="normal")
+    botonConsultar.config(font=("Verdana", 10), state="disabled")
+    botonLimpiar.config(font=("Verdana", 10), state="normal")
+    botonGuardar.config(font=("Verdana", 10), state="normal")
+    botonCerrar.config(font=("Verdana", 10), state="normal")
 

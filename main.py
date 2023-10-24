@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from functions import crearBaseDatos, salirAplicacion
+from functions import crearBaseDatos, salirAplicacion, insertarRegistro
 
 root = Tk()
 
@@ -71,19 +71,19 @@ frameInferior.pack()
 # Creacion de los botones
 botonConsultar = Button(frameInferior, text="Consultar", width=10)
 botonConsultar.grid(row=1, column=1, padx=5, pady=5)
-botonConsultar.config(font=("Verdana", 10))
+botonConsultar.config(font=("Verdana", 10), state="disabled")
 
 botonGuardar = Button(frameInferior, text="Guardar", width=10)
 botonGuardar.grid(row=1, column=2, padx=5, pady=5)
-botonGuardar.config(font=("Verdana", 10))
+botonGuardar.config(font=("Verdana", 10), state="disabled")
 
 botonLimpiar = Button(frameInferior, text="Limpiar", width=10)
 botonLimpiar.grid(row=1, column=0, padx=5, pady=5)
-botonLimpiar.config(font=("Verdana", 10))
+botonLimpiar.config(font=("Verdana", 10), state="disabled")
 
-botonSalir = Button(frameInferior, text="Salir", width=10)
-botonSalir.grid(row=1, column=3, padx=5, pady=5)
-botonSalir.config(font=("Verdana", 10))
+botonCerrar = Button(frameInferior, text="Cerrar", width=10)
+botonCerrar.grid(row=1, column=3, padx=5, pady=5)
+botonCerrar.config(font=("Verdana", 10), state="disabled")
 
 #Construccion de la barra de menu
 menuBarra = Menu(root)
@@ -101,7 +101,7 @@ menuBarra.add_cascade(label="Ayuda", menu=menuAyuda, font=("Verdana", 15))
 menuBBDD.add_command(label="Crear Base de Datos", command=crearBaseDatos)
 menuBBDD.add_command(label="Salir de la aplicación", command=lambda:salirAplicacion(root))
 
-menuCRUD.add_command(label="Insertar registro")
+menuCRUD.add_command(label="Insertar registro", command=lambda:insertarRegistro(entryNombre, entryApellido, entryEmail, entryPass, textComentarios, botonConsultar, botonLimpiar, botonGuardar, botonCerrar))
 menuCRUD.add_command(label="Leer registro")
 menuCRUD.add_command(label="Actualizar registro")
 menuCRUD.add_command(label="Eliminar registro")
