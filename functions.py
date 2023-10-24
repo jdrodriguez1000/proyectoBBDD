@@ -22,3 +22,12 @@ def crearBaseDatos():
         messagebox.showwarning("Base de datos", "La base de datos ya existe")    
 
 
+def salirAplicacion(root):
+    rpta = messagebox.askyesno("Salir aplicacion", "Desea salir de la aplicacion?")
+    if rpta==True:
+        conexionBD = sqlite3.connect("BD_Usuarios")
+        conexionBD.close()
+        root.destroy()
+    
+        
+

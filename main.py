@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from functions import crearBaseDatos
+from functions import crearBaseDatos, salirAplicacion
 
 root = Tk()
 
@@ -37,26 +37,26 @@ labelComentarios.config(font=("Verdana", 8))
 #Creacion de los entries para el frame superior
 entryId = Entry(frameSuperior)
 entryId.grid(row=0, column=1, padx=5, pady=5)
-entryId.config(font=("Verdanda", 12), justify="center")
+entryId.config(font=("Verdanda", 12), justify="center", state="disabled")
 
 entryNombre = Entry(frameSuperior)
 entryNombre.grid(row=1, column=1, padx=5, pady=5)
-entryNombre.config(font=("Verdanda", 12), justify="center")
+entryNombre.config(font=("Verdanda", 12), justify="center", state="disabled")
 
 entryApellido = Entry(frameSuperior)
 entryApellido.grid(row=2, column=1, padx=5, pady=5)
-entryApellido.config(font=("Verdanda", 12), justify="center")
+entryApellido.config(font=("Verdanda", 12), justify="center", state="disabled")
 
 entryEmail = Entry(frameSuperior)
 entryEmail.grid(row=3, column=1, padx=5, pady=5)
-entryEmail.config(font=("Verdanda", 12), justify="center")
+entryEmail.config(font=("Verdanda", 12), justify="center", state="disabled")
 
 entryPass = Entry(frameSuperior)
 entryPass.grid(row=4, column=1, padx=5, pady=5)
-entryPass.config(font=("Verdanda", 12), justify="center", show="*")
+entryPass.config(font=("Verdanda", 12), justify="center", show="*", state="disabled")
 
 # Agregar el campo tipo Text
-textComentarios = Text(frameSuperior, width=26, height=5)
+textComentarios = Text(frameSuperior, width=26, height=5, state="disabled")
 textComentarios.grid(row=5, column=1, padx=5, pady=5)
 
 #Agregamos la barra al campo de texto de comentario
@@ -98,8 +98,8 @@ menuBarra.add_cascade(label="Operaciones", menu=menuCRUD, font=("Verdana", 15))
 menuBarra.add_cascade(label="Ayuda", menu=menuAyuda, font=("Verdana", 15))
 
 #Construccion submenus
-menuBBDD.add_command(label="Crear BD", command=crearBaseDatos)
-menuBBDD.add_command(label="Salir de la aplicación")
+menuBBDD.add_command(label="Crear Base de Datos", command=crearBaseDatos)
+menuBBDD.add_command(label="Salir de la aplicación", command=lambda:salirAplicacion(root))
 
 menuCRUD.add_command(label="Insertar registro")
 menuCRUD.add_command(label="Leer registro")
